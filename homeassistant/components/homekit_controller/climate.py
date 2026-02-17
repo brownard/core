@@ -522,7 +522,13 @@ class HomeKitClimateEntity(HomeKitBaseClimateEntity):
                 }
             )
         else:
-            chars[CharacteristicsTypes.TEMPERATURE_TARGET] = temp
+            # chars[CharacteristicsTypes.TEMPERATURE_TARGET] = temp
+            chars.update(
+                {
+                    CharacteristicsTypes.TEMPERATURE_TARGET: temp,
+                    CharacteristicsTypes.HEATING_COOLING_TARGET: value,
+                }
+            )
 
         await self.async_put_characteristics(chars)
 
